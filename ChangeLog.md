@@ -1,5 +1,10 @@
 ## Change Log
 
+**Update: 1.1.0**
+<br>Separado a tool em duas tool, uma para x360 e outra para ps3
+<br>Cada tool faz repack com um alinhamento diferente.
+<br>Com a tool nova de ps3, corrige-se o erro que acontecia no console real de ps3, que estava apresentando erro nos arquivos pack.
+
 **Update: 1.0.8**
 <br> Melhorias no código.
 <br> Renomeado o nome da tool.

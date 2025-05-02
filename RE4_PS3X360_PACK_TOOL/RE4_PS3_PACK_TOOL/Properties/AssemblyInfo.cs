@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("RE4 PS3X360 PACK TOOL")]
-[assembly: AssemblyDescription("RE4 PS3X360 PACK TOOL by JADERLINK")]
+[assembly: AssemblyTitle("RE4 PS3 PACK TOOL")]
+[assembly: AssemblyDescription("RE4 PS3 PACK TOOL by JADERLINK")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JADERLINK")]
-[assembly: AssemblyProduct("RE4 PS3X360 PACK TOOL")]
+[assembly: AssemblyProduct("RE4 PS3 PACK TOOL")]
 [assembly: AssemblyCopyright("Copyright ©JADERLINK 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("f4b0d362-7814-4234-84b8-31d8941d338f")]
+[assembly: Guid("8c613771-2eb5-4a0a-8b63-e3cba59c2203")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //

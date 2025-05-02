@@ -7,12 +7,13 @@ Programa destinado a extrair e reempacotar arquivos .pack/.pack.yz2 das versão 
 <br> Ao extrair será gerado um arquivo de extenção .idxbigpack, ele será usado para o repack.
 <br> Nota: so são aceitos ".pack.yz2" sem compressão;
 
-**Last Update: V.1.0.8**
+**Last Update: V.1.1.0**
 
 ## Extract
 
 Exemplo:
-<br>*RE4_PS3X360_PACK_TOOL.exe "44000100.pack"*
+<br>*RE4_PS3_PACK_TOOL.exe "44000100.pack"*
+<br>*RE4_X360_PACK_TOOL.exe "44000100.pack"*
 
 * Vai gerar um arquivo de nome "44000100.pack.idxbigpack";
 * Vai criar uma pasta de nome "44000100";
@@ -21,7 +22,8 @@ Exemplo:
 ## Repack
 
 Exemplo:
-<br>*RE4_PS3X360_PACK_TOOL.exe "44000100.pack.idxbigpack"*
+<br>*RE4_PS3_PACK_TOOL.exe "44000100.pack.idxbigpack"*
+<br>*RE4_X360_PACK_TOOL.exe "44000100.pack.idxbigpack"*
 
 * Vai ler as imagens da pasta "44000100";
 * A quantidade é definida pela numeração (então não deixe imagens faltando no meio);
@@ -37,4 +39,4 @@ Para pular numeração, uso um arquivo com o formato .empty (não vai ter imagem
 <br>Para referenciar uma imagem anterior (repeti-la), use o arquivo .reference e dentro escreva o ID da imagem. Ex: 0002.reference, e o conteúdo do arquivo vai ser: "0000" , para referenciar a textura de ID 0;
 
 **At.te: JADERLINK**
-<br>2025-02-01
+<br>2025-05-02

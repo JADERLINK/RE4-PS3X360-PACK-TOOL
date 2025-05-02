@@ -5,19 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace RE4_PS3X360_PACK_TOOL
+namespace RE4_PS3X360_PACK_SHARED_PROJECT
 {
-    internal class Program
+    internal static class MainProgram
     {
-        internal static void Main(string[] args)
+        internal static void Continue(string[] args, bool isPs3Mode)
         {
             System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-
-            Console.WriteLine("# RE4 PS3X360 PACK TOOL");
-            Console.WriteLine("# By: JADERLINK");
-            Console.WriteLine("# youtube.com/@JADERLINK");
-            Console.WriteLine("# github.com/JADERLINK");
-            Console.WriteLine("# VERSION 1.0.8 (2025-01-31)");
 
             if (args.Length == 0)
             {
@@ -70,7 +64,7 @@ namespace RE4_PS3X360_PACK_TOOL
                             {
                                 try
                                 {
-                                    Repack.RepackFile(info.FullName);
+                                    Repack.RepackFile(info.FullName, isPs3Mode);
                                 }
                                 catch (Exception ex)
                                 {

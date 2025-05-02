@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4B0D362-7814-4234-84B8-31D8941D338F}</ProjectGuid>
+    <ProjectGuid>{8C613771-2EB5-4A0A-8B63-E3CBA59C2203}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RE4_PS3X360_PACK_TOOL</RootNamespace>
-    <AssemblyName>RE4_PS3X360_PACK_TOOL</AssemblyName>
+    <RootNamespace>RE4_PS3_PACK_TOOL</RootNamespace>
+    <AssemblyName>RE4_PS3_PACK_TOOL</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -37,9 +37,6 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>RE4_PS3X360_PACK_TOOL.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,13 +44,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extract.cs" />
-    <Compile Include="Repack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="SimpleEndianBinaryIO\SimpleEndianBinaryIO.projitems" Label="Shared" />
+  <Import Project="..\SimpleEndianBinaryIO\SimpleEndianBinaryIO.projitems" Label="Shared" />
+  <Import Project="..\RE4_PS3X360_PACK_SHARED_PROJECT\RE4_PS3X360_PACK_SHARED_PROJECT.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

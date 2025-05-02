@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using SimpleEndianBinaryIO;
 
-namespace RE4_PS3X360_PACK_TOOL
+namespace RE4_PS3X360_PACK_SHARED_PROJECT
 {
     internal static class Extract
     {

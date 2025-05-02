@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using SimpleEndianBinaryIO;
 
-namespace RE4_PS3X360_PACK_TOOL
+namespace RE4_PS3X360_PACK_SHARED_PROJECT
 {
     internal static class Repack
     {
-        internal static void RepackFile(string file)
+        internal static void RepackFile(string file, bool isPs3Mode)
         {
             StreamReader idx = null;
             FileInfo fileInfo = new FileInfo(file);
@@ -157,16 +157,54 @@ namespace RE4_PS3X360_PACK_TOOL
                             string tga15path = Path.Combine(ImageFolder, i.ToString("D4") + ".tga15");
                             string _null = Path.Combine(ImageFolder, i.ToString("D4") + ".null");
 
+                            bool IsTGA = false;
                             FileInfo imageFile = null;
                                  if (File.Exists(gtfpath))   { imageFile = new FileInfo(gtfpath); }
                             else if (File.Exists(ddspath))   { imageFile = new FileInfo(ddspath); }
-                            else if (File.Exists(tga03path)) { imageFile = new FileInfo(tga03path); }
-                            else if (File.Exists(tga15path)) { imageFile = new FileInfo(tga15path); }
-                            else if (File.Exists(tgapath))   { imageFile = new FileInfo(tgapath); }
-                            else if (File.Exists(_null))     { imageFile = new FileInfo(_null); }
+                            else if (File.Exists(tga03path)) { imageFile = new FileInfo(tga03path); IsTGA = true; }
+                            else if (File.Exists(tga15path)) { imageFile = new FileInfo(tga15path); IsTGA = true; }
+                            else if (File.Exists(tgapath))   { imageFile = new FileInfo(tgapath); IsTGA = true; }
+                            else if (File.Exists(_null))     { imageFile = new FileInfo(_null); IsTGA = true; }
 
                             if (imageFile != null)
                             {
+                                if (isPs3Mode)
+                                {
+                                    byte lessSignificant = (byte)(nextOffset & 0x000000FF);
+
+                                    if (IsTGA) // caso TGA
+                                    {
+                                        if (lessSignificant <= 0x5E)
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) | 0x5E;
+                                        }
+                                        else if (lessSignificant <= 0xDE)
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) | 0xDE;
+                                        }
+                                        else
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) + 0x15E;
+                                        }
+                                    }
+                                    else //caso GTF
+                                    {
+                                        if (lessSignificant <= 70)
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) | 0x70;
+                                        }
+                                        else if (lessSignificant <= 0xF0)
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) | 0xF0;
+                                        }
+                                        else
+                                        {
+                                            nextOffset = (nextOffset & 0xFFFFFF00) + 0x170;
+                                        }
+                                    }
+
+                                }
+
                                 offsetVisiteds.Add(i, nextOffset);
 
                                 packFile.BaseStream.Position = 8 + (i * 4);
@@ -189,10 +227,7 @@ namespace RE4_PS3X360_PACK_TOOL
                                 fileStream.Close();
 
                                 //alinhamento
-                                uint aLine = (uint)packFile.BaseStream.Position / 16;
-                                uint aRest = (uint)packFile.BaseStream.Position % 16;
-                                aLine += aRest != 0 ? 1u : 0u;
-                                int aDif = (int)((aLine * 16) - packFile.BaseStream.Position);
+                                int aDif = (int)(16 - (packFile.BaseStream.Position % 16)) % 16;
                                 packFile.Write(new byte[aDif]);
 
                                 nextOffset = (uint)packFile.BaseStream.Position;
